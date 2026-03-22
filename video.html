@@ -6,31 +6,35 @@
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 <style>
-/* Extra styling specific to video page */
-
-body, html { margin: 0; padding: 0; height: 100%; }
+body, html { margin: 0; padding: 0; height: 100%; font-family: 'Orbitron', sans-serif; }
 
 #bg-video {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    z-index: -1;
+    position: fixed; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-1;
     filter: brightness(0.45) blur(1.5px);
 }
 
 .overlay {
     backdrop-filter: blur(15px);
     background: rgba(0,0,0,0.6);
-    min-height: 100vh;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    min-height:100vh;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    box-sizing:border-box;
 }
 
-h1 { color:#00ffcc; text-shadow: 0 0 15px #00ffcc; text-align:center; margin-bottom: 20px; }
-iframe { width: 90%; height: 600px; border-radius: 20px; box-shadow: 0 0 40px #00ffcc; margin: 20px 0; }
+h1 { color:#00ffcc; text-shadow:0 0 15px #00ffcc; text-align:center; margin-bottom:20px; }
+
+iframe#pdf {
+    width: 100%;
+    max-width: 1200px;  /* Desktop max width */
+    height: 80vh;       /* Use 80% of viewport height */
+    border-radius: 20px;
+    box-shadow: 0 0 40px #00ffcc;
+    margin: 20px 0;
+}
+
 a.button {
     display:inline-block;
     margin:10px;
@@ -42,11 +46,13 @@ a.button {
     border:1px solid #00ffcc;
     border-radius:15px;
     transition:0.3s;
+    text-align:center;
 }
 a.button:hover { background:#00ffcc; color:#000; }
 
 .tab {
     width:90%;
+    max-width: 1200px;
     background: rgba(0,0,0,0.3);
     padding:15px;
     margin:20px 0;
@@ -60,23 +66,35 @@ a.button:hover { background:#00ffcc; color:#000; }
     display:flex;
     justify-content:center;
     gap:20px;
+    flex-wrap:wrap;
     margin-top:30px;
 }
-
 .footer-social a img {
     width:40px;
     filter: drop-shadow(0 0 5px #00ffcc);
     transition: transform 0.3s;
 }
-.footer-social a img:hover {
-    transform: scale(1.2);
+.footer-social a img:hover { transform: scale(1.2); }
+
+.footer { text-align:center; margin-top:20px; font-size:14px; color:#00ff99; }
+
+/* Responsive adjustments */
+@media screen and (max-width: 1024px) {
+    iframe#pdf { height: 70vh; }
+    .overlay { padding:15px; }
 }
 
-.footer {
-    text-align:center;
-    margin-top:20px;
-    font-size:14px;
-    color:#00ff99;
+@media screen and (max-width: 768px) {
+    iframe#pdf { height: 60vh; }
+    a.button { padding:10px 20px; font-size:14px; }
+}
+
+@media screen and (max-width: 480px) {
+    iframe#pdf { height: 55vh; margin:15px 0; }
+    h1 { font-size:1.8em; }
+    a.button { padding:8px 15px; font-size:12px; margin:5px; }
+    .tab { font-size:12px; padding:10px; }
+    .footer-social a img { width:35px; }
 }
 </style>
 </head>
