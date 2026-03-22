@@ -1,0 +1,82 @@
+/* Base Styles */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Orbitron', sans-serif; }
+body, html { width: 100%; height: 100%; overflow-x: hidden; color: #00ffcc; }
+
+/* Fullscreen Cyber Video Background */
+#bg-video {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.9) blur(2px);
+}
+
+/* Overlay Glass */
+.overlay {
+  backdrop-filter: blur(15px);
+  background: rgba(0,0,0,0.6);
+  min-height: 100vh;
+  padding: 30px;
+}
+
+/* Logo + Header */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+header img { width: 120px; border-radius: 15px; box-shadow: 0 0 20px #00ffcc; }
+header h1 { color: #00ffcc; text-shadow: 0 0 15px #00ffcc; font-size: 3em; margin: 15px 0; }
+header a { color: #00ffcc; font-size: 18px; text-decoration: none; text-shadow: 0 0 5px #00ffcc; }
+
+/* Search Input */
+input#search {
+  width: 60%;
+  padding: 18px;
+  border-radius: 20px;
+  border: none;
+  margin: 20px auto;
+  display: block;
+  font-size: 18px;
+  background: rgba(255,255,255,0.05);
+  color: #00ffcc;
+  text-shadow: 0 0 3px #00ffcc;
+}
+input#search:focus { outline: none; box-shadow: 0 0 20px #00ffcc; }
+
+/* Video Cards */
+#results { display: flex; flex-wrap: wrap; justify-content: center; margin-top: 30px; }
+.card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 25px;
+  padding: 15px;
+  margin: 15px;
+  width: 260px;
+  box-shadow: 0 0 25px #00ffcc;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover { transform: scale(1.05); box-shadow: 0 0 40px #00ffcc; }
+.card img { width: 100%; border-radius: 15px; }
+
+/* Links */
+.card a, #yt, #download { display: block; text-align: center; margin-top: 10px; font-weight: bold; color: #00ffcc; text-decoration: none; text-shadow: 0 0 5px #00ffcc; }
+.card a:hover, #yt:hover, #download:hover { text-decoration: underline; }
+
+/* PDF Iframe */
+iframe { width: 80%; height: 600px; margin: 30px auto; display: block; border-radius: 20px; box-shadow: 0 0 40px #00ffcc; }
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 14px;
+  color: #00ff99;
+}
+
+/* Neon Flicker Animation */
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 22%, 24%, 55% { opacity: 0.4; }
+}
+h1 { animation: flicker 2s infinite; }

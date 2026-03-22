@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NS Cyber Hub - Learn Ethical Hacking & Cybersecurity</title>
+<meta name="description" content="NS Cyber Hub provides NS Jagat's educational cybersecurity videos, PDFs, and tutorials for ethical hacking and cybersecurity learning. It is made to provide the learning materials to the audience of NS Jagat so that they can learn easily with fully free resources.">
+<meta name="keywords" content="NS Jagat, cybersecurity, ethical hacking, hacking tutorials, penetration testing, PDFs, NS Cyber Hub">
+<meta name="author" content="NS Jagat">
+<link rel="icon" href="assets/logo.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+body, html { margin:0; padding:0; height:100%; overflow-x:hidden; font-family: 'Orbitron', sans-serif; background:#000;}
+#bg-video { position: fixed; top:0; left:0; width:100%; height:100%; object-fit: cover; z-index:-1; filter: brightness(0.45) blur(1.5px);}
+.overlay { backdrop-filter: blur(15px); background: rgba(0,0,0,0.6); min-height:100vh; padding:30px; display:flex; flex-direction: column; align-items: center;}
+header { text-align:center; margin-bottom:20px; }
+header img { width:120px; border-radius:15px; box-shadow:0 0 20px #00ffcc; }
+header h1 { color:#00ffcc; font-size:3em; text-shadow:0 0 15px #00ffcc; margin:15px 0; }
+header a { color:#00ffcc; font-size:18px; text-decoration:none; text-shadow:0 0 5px #00ffcc; }
+header a:hover { text-decoration:underline; }
+
+/* Disclaimer */
+#disclaimer { text-align:center; color:#00ff99; font-size:14px; margin-bottom:20px; background: rgba(0,0,0,0.3); padding:10px 15px; border-radius:15px; }
+
+/* Search bar with inline icon */
+#search-container { position: relative; width:60%; margin-bottom:10px; }
+#search { width:100%; padding:15px 50px 15px 18px; border-radius:20px; border:none; font-size:18px; background: rgba(255,255,255,0.05); color:#00ffcc; text-shadow:0 0 3px #00ffcc;}
+#search::placeholder { color:#00ff99; font-style:italic; }
+#search:focus { outline:none; box-shadow:0 0 20px #00ffcc; }
+#search-icon { position:absolute; right:15px; top:50%; transform:translateY(-50%); font-size:20px; color:#00ffcc; cursor:pointer; }
+
+/* Suggestions list */
+.suggestions { list-style:none; padding-left:0; color:#00ffcc; width:60%; max-width:600px; margin-top:5px; border-radius:15px; background: rgba(0,0,0,0.3); max-height:250px; overflow-y:auto;}
+.suggestions li a { color:#00ffcc; text-decoration:none; display:block; padding:10px; border-bottom:1px solid rgba(0,255,204,0.2);}
+.suggestions li a:hover { background:#00ffcc; color:#000; }
+
+/* Result cards */
+#results { display:flex; flex-wrap: wrap; justify-content:center; margin-top:20px; }
+.card { background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border-radius:25px; padding:15px; margin:15px; width:280px; box-shadow:0 0 25px #00ffcc; transition: transform 0.3s, box-shadow 0.3s; cursor:pointer;}
+.card:hover { transform:scale(1.05); box-shadow:0 0 40px #00ffcc; }
+.card img { width:100%; border-radius:15px; }
+.card h3 { color:#00ffcc; text-shadow:0 0 5px #00ffcc; font-size:1.2em; margin-top:10px; }
+
+/* Social icons */
+.footer-social { display:flex; justify-content:center; gap:20px; margin-top:30px; }
+.footer-social a img { width:40px; filter: drop-shadow(0 0 5px #00ffcc); transition: transform 0.3s; }
+.footer-social a img:hover { transform:scale(1.2); }
+
+.footer { text-align:center; margin-top:20px; font-size:14px; color:#00ff99; }
+</style>
+</head>
+<body>
+
+<video autoplay muted loop id="bg-video">
+  <source src="assets/background.mp4" type="video/mp4">
+</video>
+
+<div class="overlay">
+
+<header>
+  <img src="assets/logo.png" alt="NS Cyber Hub Logo">
+  <h1>⚡ NS Cyber Hub</h1>
+  <a href="https://youtube.com/@nsjagat-c?si=KBdEAU_uUWHXFr4X" target="_blank">Visit NS Jagat on YouTube</a>
+</header>
+
+<div id="disclaimer">
+⚠️ Disclaimer: All content is strictly for <strong>educational purposes</strong>. Use responsibly. Illegal use may be punishable by law.
+</div>
+
+<!-- Search bar with magnifying glass -->
+<div id="search-container">
+  <input id="search" placeholder="Search YouTube video titles..." autocomplete="off">
+  <span id="search-icon">🔍</span>
+</div>
+<ul id="suggestions" class="suggestions"></ul>
+
+<!-- Video results -->
+<div id="results"></div>
+
+<!-- Social media links -->
+<div class="footer-social">
+  <a href="https://www.facebook.com/people/NS-Jagat/61586143733508/?rdid=mMyC2YQOGPXTwboD&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1AebyuDJ9n%2F" target="_blank"><img src="assets/fb.png" alt="Facebook"></a>
+  <a href="https://www.instagram.com/accounts/login/?next=%2Fns.jagat7&source=omni_redirect" target="_blank"><img src="assets/insta.png" alt="Instagram"></a>
+  <a href="https://github.com/jagatsah98213-del" target="_blank"><img src="assets/github.png" alt="GitHub"></a>
+  <a href="https://youtube.com/@nsjagat-c?si=KBdEAU_uUWHXFr4X" target="_blank"><img src="assets/yt.png" alt="YouTube"></a>
+  <a href="https://www.tiktok.com/@ns.jagat?_r=1&_t=ZS-943XbvgHKfU" target="_blank"><img src="assets/tiktok.png" alt="TikTok"></a>
+</div>
+
+<div class="footer">&copy; 2026 NS Cyber Hub. All rights reserved.</div>
+
+<script>
+// Load videos data
+let videos = [];
+fetch("data.json")
+  .then(res => res.json())
+  .then(data => {
+      videos = data;
+      displayAllVideos();
+  })
+  .catch(err => console.error("Failed to load data.json:", err));
+
+const resultsDiv = document.getElementById("results");
+const suggestionsUl = document.getElementById("suggestions");
+const searchInput = document.getElementById("search");
+const searchIcon = document.getElementById("search-icon");
+
+// Display all videos by default
+function displayAllVideos() {
+    resultsDiv.innerHTML = "";
+    videos.forEach(v => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `<img src="${v.thumbnail}"><h3>${v.title}</h3>`;
+        card.onclick = () => window.location.href = `video.html?id=${v.id}`;
+        resultsDiv.appendChild(card);
+    });
+}
+
+// Search function
+function doSearch(query) {
+    resultsDiv.innerHTML = "";
+    suggestionsUl.innerHTML = "";
+
+    const filtered = query ? videos.filter(v => v.title.toLowerCase().includes(query)) : videos;
+
+    filtered.forEach(v => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `<img src="${v.thumbnail}"><h3>${v.title}</h3>`;
+        card.onclick = () => window.location.href = `video.html?id=${v.id}`;
+        resultsDiv.appendChild(card);
+    });
+
+    filtered.forEach(v => {
+        const li = document.createElement("li");
+        li.innerHTML = `<a href="video.html?id=${v.id}">${v.title}</a>`;
+        suggestionsUl.appendChild(li);
+    });
+}
+
+// Instant search on keyup
+searchInput.addEventListener("keyup", () => {
+    doSearch(searchInput.value.toLowerCase());
+});
+
+// Search on magnifying glass click
+searchIcon.addEventListener("click", () => {
+    doSearch(searchInput.value.toLowerCase());
+});
+
+// Initial display
+displayAllVideos();
+</script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cyber Academy Video</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* Extra styling specific to video page */
+
+body, html { margin: 0; padding: 0; height: 100%; }
+
+#bg-video {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.45) blur(1.5px);
+}
+
+.overlay {
+    backdrop-filter: blur(15px);
+    background: rgba(0,0,0,0.6);
+    min-height: 100vh;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 { color:#00ffcc; text-shadow: 0 0 15px #00ffcc; text-align:center; margin-bottom: 20px; }
+iframe { width: 90%; height: 600px; border-radius: 20px; box-shadow: 0 0 40px #00ffcc; margin: 20px 0; }
+a.button {
+    display:inline-block;
+    margin:10px;
+    padding:12px 25px;
+    color:#00ffcc;
+    text-decoration:none;
+    font-weight:bold;
+    text-shadow:0 0 5px #00ffcc;
+    border:1px solid #00ffcc;
+    border-radius:15px;
+    transition:0.3s;
+}
+a.button:hover { background:#00ffcc; color:#000; }
+
+.tab {
+    width:90%;
+    background: rgba(0,0,0,0.3);
+    padding:15px;
+    margin:20px 0;
+    border-radius:15px;
+    text-align:center;
+    font-size: 14px;
+    color:#00ff99;
+}
+
+.footer-social {
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin-top:30px;
+}
+
+.footer-social a img {
+    width:40px;
+    filter: drop-shadow(0 0 5px #00ffcc);
+    transition: transform 0.3s;
+}
+.footer-social a img:hover {
+    transform: scale(1.2);
+}
+
+.footer {
+    text-align:center;
+    margin-top:20px;
+    font-size:14px;
+    color:#00ff99;
+}
+</style>
+</head>
+<body>
+
+<!-- Background Video -->
+<video autoplay muted loop id="bg-video">
+    <source src="assets/background.mp4" type="video/mp4">
+</video>
+
+<div class="overlay">
+
+<h1 id="title">Loading...</h1>
+
+<!-- PDF Viewer (cross-platform via Google Docs Viewer) -->
+<iframe id="pdf"></iframe>
+
+<!-- Buttons -->
+<div>
+    <a id="yt" class="button" target="_blank">Watch on YouTube</a>
+    <a id="download" class="button" download>Download PDF</a>
+</div>
+
+<!-- Disclaimer -->
+<div class="tab">
+⚠️ <strong>Disclaimer:</strong> All content provided here is strictly for <strong>educational purposes</strong>. 
+Use responsibly. Any illegal or unauthorized use may be punishable by law.
+</div>
+
+<!-- Social Links -->
+<div class="footer-social">
+    <a href="https://www.facebook.com/people/NS-Jagat/61586143733508/?rdid=mMyC2YQOGPXTwboD&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1AebyuDJ9n%2F" target="_blank">
+        <img src="assets/fb.png" alt="Facebook">
+    </a>
+    <a href="https://www.instagram.com/accounts/login/?next=%2Fns.jagat7&source=omni_redirect" target="_blank">
+        <img src="assets/insta.png" alt="Instagram">
+    </a>
+    <a href="https://github.com/jagatsah98213-del" target="_blank">
+        <img src="assets/github.png" alt="GitHub">
+    </a>
+    <a href="https://www.youtube.com/YOUR_CHANNEL_LINK" target="_blank">
+        <img src="assets/yt.png" alt="YouTube">
+    </a>
+    <a href="https://www.tiktok.com/@ns.jagat?_r=1&_t=ZS-943XbvgHKfU" target="_blank">
+        <img src="assets/tiktok.png" alt="TikTok">
+    </a>
+</div>
+
+<div class="footer">
+    &copy; 2026 Cyber Academy. All rights reserved.
+</div>
+
+<script>
+// Get video ID from URL
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+fetch("data.json")
+  .then(res => res.json())
+  .then(data => {
+      const v = data.find(x => x.id === id);
+      if(!v) {
+          document.getElementById("title").innerText = "Video not found";
+          return;
+      }
+
+      document.getElementById("title").innerText = v.title;
+
+      // Use Google Docs Viewer for cross-platform PDF preview
+      const pdfUrl = encodeURIComponent(v.pdf);
+      document.getElementById("pdf").src = `https://docs.google.com/gview?url=${pdfUrl}&embedded=true`;
+
+      document.getElementById("yt").href = v.videoLink;
+      document.getElementById("download").href = v.pdf;
+  })
+  .catch(err => {
+      console.error("Failed to load data.json", err);
+      document.getElementById("title").innerText = "Failed to load video data";
+  });
+</script>
+
+</div>
+</body>
+</html>
